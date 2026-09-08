@@ -44,36 +44,69 @@ header h1 {
     color: var(--color-acento);
 }
 
-/* ===== NAV ===== */
-nav {
-    background-color: var(--color-acento);
-    padding: 10px 15px;
+/* ===== NAVBAR (Bootstrap) ===== */
+.navbar {
+    background-color: var(--color-fondo-oscuro);
 }
 
-nav ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
+.navbar-brand {
+    font-family: var(--fuente-titulos);
+    color: var(--color-acento) !important;
+    font-size: 1.6rem;
 }
 
-nav h2 {
-    color: var(--color-fondo-oscuro);
-    text-align: center;
-    margin: 0 0 10px 0;
-}
-
-nav a {
-    color: var(--color-fondo-oscuro);
-    font-size: 1rem;
-    text-decoration: none;
+.navbar-nav .nav-link {
+    color: var(--color-texto-claro) !important;
     font-weight: bold;
 }
 
-nav a:hover {
+.navbar-nav .nav-link:hover {
+    color: var(--color-acento) !important;
+}
+
+/* ===== CARRUSEL (Bootstrap) ===== */
+.carrusel-img {
+    height: 550px;
+    object-fit: cover;
+    object-position: 50% 30%;
+}
+
+.carrusel-img.pos-center {
+    object-position: center;
+}
+
+.carrusel-img.pos-gow {
+    object-position: 50% 10%;
+}
+
+.carrusel-img.pos-zelda {
+    object-position: 50% 60%;
+}
+
+.carousel-caption h5 {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.65);
     color: var(--color-texto-claro);
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+.carousel-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    pointer-events: none;
 }
 
 /* ===== SECTIONS (main) ===== */
@@ -106,29 +139,19 @@ section p {
 
 /* Selector de clase: aplicado a cada producto en el HTML */
 .producto {
-    background-color: var(--color-fondo-producto);
     border: 1px solid var(--color-acento);
     border-radius: 6px;
-    padding: 15px;
-    box-sizing: border-box;
 }
 
-/* Alterna colores de fondo para productos pares e impares */
-#productos ul li:nth-child(odd) {
+.producto .card-title {
+    font-family: var(--fuente-titulos);
+    color: var(--color-fondo-oscuro);
+}
+
+.producto .card-img-top {
+    height: 220px;
+    object-fit: contain;
     background-color: var(--color-fondo-producto);
-}
-
-#productos ul li:nth-child(even) {
-    background-color: var(--color-fondo-producto-par);
-}
-
-#productos ul {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
 }
 
 /* ===== FOOTER ===== */
@@ -149,17 +172,13 @@ footer a {
 
 /* Responsive - Tablets */
 @media (max-width: 768px) {
-    #productos ul {
-        grid-template-columns: repeat(2, 1fr);
+    .carrusel-img {
+        height: 300px;
     }
 }
 
 /* Responsive - Mobile */
 @media (max-width: 480px) {
-    #productos ul {
-        grid-template-columns: 1fr;
-    }
-
     header {
         padding: 15px 15px;
     }
@@ -168,19 +187,14 @@ footer a {
         font-size: 1.8rem;
     }
 
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+    .navbar-brand {
+        font-size: 1.3rem;
     }
 
-    nav h2 {
-        font-size: 1rem;
-        margin: 0 0 10px 0;
-    }
-
-    nav a {
-        font-size: 0.9rem;
+    .carrusel-img {
+        height: 220px;
+        object-fit: contain;
+        background-color: var(--color-fondo-oscuro);
     }
 
     section {

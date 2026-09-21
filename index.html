@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> LA Gaming - tienda de Videojuegos</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 
     <!-- Bootstrap 5 CSS (CDN) -->
      <link
@@ -25,7 +25,6 @@
     <!-- Barra de navegación responsiva (Bootstrap Navbar) -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#inicio">L.A Gaming</a>
 
             <!-- Botón Hamburguesa: aparece en dispositivos móviles -->
              <button
@@ -41,12 +40,22 @@
 
             <!-- Contenido colapsable -->
             <div class="collapse navbar-collapse" id="menuPrincipal">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#inicio">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#productos">Productos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorías
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item categoria-link" href="#productos" data-categoria="todos">Ver todos</a></li>
+                            <li><a class="dropdown-item categoria-link" href="#productos" data-categoria="accion">Acción</a></li>
+                            <li><a class="dropdown-item categoria-link" href="#productos" data-categoria="aventura">Aventura</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contacto">Contacto</a>
@@ -72,31 +81,31 @@
 
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="3000">
-                    <img src="img/zelda-totk.jpg" class="d-block w-100 carrusel-img pos-zelda" alt="The Legend of Zelda: Tears of the Kingdom">                   
+                    <img src="assets/img/zelda-totk.jpg" class="d-block w-100 carrusel-img pos-zelda" alt="The Legend of Zelda: Tears of the Kingdom">                   
                     <div class="carousel-caption d-none d-md-block">
                         <h5>The Legend of Zelda: Tears of the Kingdom</h5>
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="3000">
-                    <img src="img/gow-ragnarok.jpg" class="d-block w-100 carrusel-img pos-gow" alt="God of War: Ragnarok">
+                    <img src="assets/img/gow-ragnarok.jpg" class="d-block w-100 carrusel-img pos-gow" alt="God of War: Ragnarok">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>God of War: Ragnarok</h5>
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="3000">
-                    <img src="img/gow-4.png" class="d-block w-100 carrusel-img" alt="Gears of War 4">
+                    <img src="assets/img/gow-4.png" class="d-block w-100 carrusel-img" alt="Gears of War 4">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Gears of War 4</h5>
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="3000">
-                    <img src="img/wow-midnight.jpeg" class="d-block w-100 carrusel-img pos-center" alt="World of Warcraft: Midnight">
+                    <img src="assets/img/wow-midnight.jpeg" class="d-block w-100 carrusel-img pos-center" alt="World of Warcraft: Midnight">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>World of Warcraft: Midnight</h5>
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="3000">
-                    <img src="img/pokemon.jpg" class="d-block w-100 carrusel-img pos-center" alt="Pokémon Waves y Pokémon Winds">
+                    <img src="assets/img/pokemon.jpg" class="d-block w-100 carrusel-img pos-center" alt="Pokémon Waves y Pokémon Winds">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Pokémon Waves / Pokémon Winds</h5>
                     </div>
@@ -123,63 +132,37 @@
         </section>
 
         <section id="productos">
-    <h2>Productos destacados</h2>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="mb-0">Productos destacados</h2>
+                <span class="badge bg-primary fs-6" id="contadorCarrito">Carrito: 0</span>
+            </div>
 
-    <!-- Grid de productos con Bootstrap (row/col + cards) -->
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <form id="formBusqueda" class="d-flex mb-3" role="search">
+                <input
+                    type="text"
+                    id="inputBusqueda"
+                    class="form-control me-2"
+                    placeholder="Buscar producto por nombre..."
+                    aria-label="Buscar producto">
+                <button class="btn btn-outline-primary" type="submit">Buscar</button>
+            </form>
 
-        <div class="col">
-            <article class="card producto h-100">
-                <img src="img/zelda-totk.jpg" class="card-img-top" alt="Portada de The Legend of Zelda: Tears of the Kingdom">
-                <div class="card-body">
-                    <h3 class="card-title h5">The Legend of Zelda: Tears of the Kingdom</h3>
-                    <p class="card-text">La secuela del aclamado juego Breath of the Wild en la saga de The Legend of Zelda.</p>
-                </div>
-            </article>
-        </div>
+            <!-- Mensaje de error (oculto por defecto, se muestra si falla el Fetch) -->
+            <div id="mensajeError" class="alert alert-danger d-none" role="alert"></div>
 
-        <div class="col">
-            <article class="card producto h-100">
-                <img src="img/gow-ragnarok.jpg" class="card-img-top" alt="Portada de God of War: Ragnarok">
-                <div class="card-body">
-                    <h3 class="card-title h5">God of War: Ragnarok</h3>
-                    <p class="card-text">La secuela del aclamado juego God of War en la saga de God of War.</p>
-                </div>
-            </article>
-        </div>
+            <!-- Grid de productos: se llena dinámicamente con JS (assets/js/app.js) -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="contenedorProductos">
+                <!-- Las cards se insertan aquí vía Fetch API + JS -->
+            </div>
+        </section>
 
-        <div class="col">
-            <article class="card producto h-100">
-                <img src="img/gow-4.png" class="card-img-top" alt="Portada de Gears of War: Reloaded">
-                <div class="card-body">
-                    <h3 class="card-title h5">Gears of War: Reloaded</h3>
-                    <p class="card-text">La reedición remasterizada del clásico Gears of War, con gráficos mejorados y mejoras de jugabilidad.</p>
-                </div>
-            </article>
-        </div>
-
-        <div class="col">
-            <article class="card producto h-100">
-                <img src="img/wow-midnight.jpeg" class="card-img-top" alt="Portada de World of Warcraft: Midnight">
-                <div class="card-body">
-                    <h3 class="card-title h5">World of Warcraft: Midnight</h3>
-                    <p class="card-text">La próxima expansión de World of Warcraft, ya disponible.</p>
-                </div>
-            </article>
-        </div>
-
-        <div class="col">
-            <article class="card producto h-100">
-                <img src="img/pokemon.jpg" class="card-img-top" alt="Portada de Pokémon Waves y Pokémon Winds">
-                <div class="card-body">
-                    <h3 class="card-title h5">Pokémon Waves / Pokémon Winds <span class="badge bg-success">Preventa</span></h3>
-                    <p class="card-text">Las nuevas entregas de Pokémon para Nintendo Switch 2, disponibles en preventa.</p>
-                </div>
-            </article>
-        </div>
-
-    </div>
-</section>
+        <section id="carrito" class="mb-4">
+            <h2>Tu carrito</h2>
+            <ul id="listaCarrito" class="list-group mb-2">
+               <li class="list-group-item text-muted" id="carritoVacio">El carrito está vacío</li>
+            </ul>
+            <p class="fw-bold">Total: <span id="totalCarrito">$0</span></p>
+        </section>
 
     </main>
 
@@ -209,6 +192,7 @@
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
 
 </body>
 </html>

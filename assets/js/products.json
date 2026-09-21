@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "nombre": "The Legend of Zelda: Tears of the Kingdom",
+    "descripcion": "La secuela del aclamado juego Breath of the Wild en la saga de The Legend of Zelda.",
+    "precio": 64990,
+    "categoria": "aventura",
+    "imagen": "assets/img/zelda-totk.jpg",
+    "badge": ""
+  },
+  {
+    "id": 2,
+    "nombre": "God of War: Ragnarok",
+    "descripcion": "La secuela del aclamado juego God of War en la saga de God of War.",
+    "precio": 49990,
+    "categoria": "accion",
+    "imagen": "assets/img/gow-ragnarok.jpg",
+    "badge": ""
+  },
+  {
+    "id": 3,
+    "nombre": "Gears of War: Reloaded",
+    "descripcion": "La reedición remasterizada del clásico Gears of War, con gráficos mejorados y mejoras de jugabilidad.",
+    "precio": 39990,
+    "categoria": "accion",
+    "imagen": "assets/img/gow-4.png",
+    "badge": ""
+  },
+  {
+    "id": 4,
+    "nombre": "World of Warcraft: Midnight",
+    "descripcion": "La próxima expansión de World of Warcraft, ya disponible.",
+    "precio": 31990,
+    "categoria": "pc",
+    "imagen": "assets/img/wow-midnight.jpeg",
+    "badge": ""
+  },
+  {
+    "id": 5,
+    "nombre": "Pokémon Waves / Pokémon Winds",
+    "descripcion": "Las nuevas entregas de Pokémon para Nintendo Switch 2, disponibles en preventa.",
+    "precio": 79990,
+    "categoria": "aventura",
+    "imagen": "assets/img/pokemon.jpg",
+    "badge": "Preventa"
+  }
+]

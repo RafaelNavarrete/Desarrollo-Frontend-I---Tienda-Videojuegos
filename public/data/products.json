@@ -5,7 +5,7 @@
     "descripcion": "La secuela del aclamado juego Breath of the Wild en la saga de The Legend of Zelda.",
     "precio": 64990,
     "categoria": "aventura",
-    "imagen": "assets/img/zelda-totk.jpg",
+    "imagen": "img/zelda-totk.jpg",
     "badge": ""
   },
   {
@@ -14,7 +14,7 @@
     "descripcion": "La secuela del aclamado juego God of War en la saga de God of War.",
     "precio": 49990,
     "categoria": "accion",
-    "imagen": "assets/img/gow-ragnarok.jpg",
+    "imagen": "img/gow-ragnarok.jpg",
     "badge": ""
   },
   {
@@ -23,7 +23,7 @@
     "descripcion": "La reedición remasterizada del clásico Gears of War, con gráficos mejorados y mejoras de jugabilidad.",
     "precio": 39990,
     "categoria": "accion",
-    "imagen": "assets/img/gow-4.png",
+    "imagen": "img/gow-4.png",
     "badge": ""
   },
   {
@@ -32,7 +32,7 @@
     "descripcion": "La próxima expansión de World of Warcraft, ya disponible.",
     "precio": 31990,
     "categoria": "pc",
-    "imagen": "assets/img/wow-midnight.jpeg",
+    "imagen": "img/wow-midnight.jpeg",
     "badge": ""
   },
   {
@@ -41,7 +41,7 @@
     "descripcion": "Las nuevas entregas de Pokémon para Nintendo Switch 2, disponibles en preventa.",
     "precio": 79990,
     "categoria": "aventura",
-    "imagen": "assets/img/pokemon.jpg",
+    "imagen": "img/pokemon.jpg",
     "badge": "Preventa"
   }
 ]

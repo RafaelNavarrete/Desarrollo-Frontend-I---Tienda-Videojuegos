@@ -1,5 +1,12 @@
-// Barra de navegación responsiva (usa el JS de Bootstrap para el menú y el dropdown)
-function Navbar() {
+// Categorías del menú desplegable
+const categorias = [
+  { valor: 'todos', etiqueta: 'Ver todos' },
+  { valor: 'accion', etiqueta: 'Acción' },
+  { valor: 'aventura', etiqueta: 'Aventura' },
+]
+
+// Barra de navegación responsiva (usa el JS de Bootstrap para el menú hamburguesa)
+function Navbar({ categoriaActiva, onSeleccionarCategoria }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
       <div className="container">
@@ -28,9 +35,21 @@ function Navbar() {
                 Categorías
               </a>
               <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#productos">Ver todos</a></li>
-                <li><a className="dropdown-item" href="#productos">Acción</a></li>
-                <li><a className="dropdown-item" href="#productos">Aventura</a></li>
+                {categorias.map((c) => (
+                  <li key={c.valor}>
+                    {/* La categoría activa se resalta*/}
+                    <a
+                      className={`dropdown-item ${categoriaActiva === c.valor ? 'active' : ''}`}
+                      href="#productos"
+                      onClick={(e) => {
+                        e.preventDefault()
+                        onSeleccionarCategoria(c.valor)
+                      }}
+                    >
+                      {c.etiqueta}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </li>
             <li className="nav-item">

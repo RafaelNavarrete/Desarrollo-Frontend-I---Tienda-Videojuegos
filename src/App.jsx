@@ -5,9 +5,9 @@ import Carrusel from './components/Carrusel'
 import Catalogo from './components/Catalogo'
 import Carrito from './components/Carrito'
 import Footer from './components/Footer'
+import Contacto from './components/Contacto'
+import FormularioJuego from './components/FormularioJuego'
 
-// Simula la latencia de una API real (poner en 0 para quitar la espera)
-const RETRASO_SIMULADO_MS = 800
 
 // Componente raíz: guarda el estado de la tienda y lo reparte a los componentes
 function App() {
@@ -19,6 +19,7 @@ function App() {
   const [busqueda, setBusqueda] = useState('') // texto aplicado al presionar "Buscar"
   const [cargando, setCargando] = useState(true) // true mientras se cargan los datos
   const [error, setError] = useState(null) // mensaje si falla la carga
+  const [modoAdmin, setModoAdmin] = useState(false) // true = modo admin activo
 
   // ---------- Efecto (useEffect) ----------
   useEffect(() => {
@@ -31,9 +32,6 @@ function App() {
           throw new Error(`Error HTTP: ${respuesta.status}`)
         }
         const datos = await respuesta.json()
-
-        // Espera simulada para mostrar el estado "cargando"
-        await new Promise((resolver) => setTimeout(resolver, RETRASO_SIMULADO_MS))
 
         if (!cancelado) setProductos(datos)
       } catch (err) {
@@ -85,6 +83,22 @@ function App() {
 
   const vaciarCarrito = () => setCarrito([])
 
+  // Agrega unn videojuego al catálogo (solo en modo admin)
+  const agregarJuego = (nuevoJuego) => {
+    setProductos((actual) => [...actual, nuevoJuego])
+  }
+
+  // elimina un videojuego del catálogo (solo en modo admin)
+  const eliminarJuego = (id) => {
+    setProductos((actual) => actual.filter((p) => p.id !== id))
+    setCarrito((actual) => actual.filter((p) => p.id !== id)) // también lo quita del carrito
+  }
+
+  // Activa o desactiva el modo admin
+  const cambiarModoAdmin = () => {
+    setModoAdmin((actual) => !actual)
+  }
+
   // Cambia la categoría y baja a la sección de productos
   const seleccionarCategoria = (nuevaCategoria) => {
     setCategoria(nuevaCategoria)
@@ -125,7 +139,12 @@ function App() {
           onCambiarTexto={setTextoBusqueda}
           onBuscar={buscar}
           onAgregar={agregarAlCarrito}
+          modoAdmin={modoAdmin}
+          onEliminarJuego={eliminarJuego}
         />
+
+        {/* solo el admin ve el formulario para agregar juegos */}
+        {modoAdmin && <FormularioJuego onAgregar={agregarJuego} />}  
 
         <Carrito
           carrito={carrito}
@@ -134,8 +153,10 @@ function App() {
           onEliminar={eliminarDelCarrito}
           onVaciar={vaciarCarrito}
         />
+
+        <Contacto />
       </main>
-      <Footer />
+      <Footer modoAdmin={modoAdmin} onCambiarModo={cambiarModoAdmin} />
     </>
   )
 }

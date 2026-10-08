@@ -11,6 +11,8 @@ function Catalogo({
   onCambiarTexto,
   onBuscar,
   onAgregar,
+  modoAdmin,
+  onEliminarJuego,
 }) {
   return (
     <section id="productos">
@@ -61,6 +63,8 @@ function Catalogo({
               producto={producto}
               enCarrito={idsEnCarrito.includes(producto.id)}
               onAgregar={onAgregar}
+              modoAdmin={modoAdmin}
+              onEliminar={onEliminarJuego}
             />
           ))}
         </div>

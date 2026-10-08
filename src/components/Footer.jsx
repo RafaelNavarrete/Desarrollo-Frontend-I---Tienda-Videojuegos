@@ -1,7 +1,7 @@
-// Pie de página con datos de contacto
-function Footer() {
+// Pie de página con datos de contacto y el interruptor del modo administrador
+function Footer({ modoAdmin, onCambiarModo }) {
   return (
-    <footer id="contacto">
+    <footer>
       <h2>Contacto</h2>
       <p>Dirección: Avenida Ricardo Vicuña 123, Los Ángeles, Chile.</p>
       <p>
@@ -14,6 +14,12 @@ function Footer() {
         </a>{' '}
         para conocer más sobre Videojuegos, accesorios y tcg.
       </p>
+
+      {/* Interruptor que simula el acceso del administrador (no hay login en este proyecto) */}
+      <button className="btn btn-outline-light btn-sm mb-3" onClick={onCambiarModo}>
+        {modoAdmin ? 'Salir del modo administrador' : 'Modo administrador'}
+      </button>
+
       <p> 2026 L.A Gaming. Todos los derechos reservados.</p>
     </footer>
   )
